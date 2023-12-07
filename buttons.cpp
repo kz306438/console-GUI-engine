@@ -30,11 +30,11 @@ SliderButton::SliderButton(int minValue, int maxValue, std::string sliderName, i
 
 void SliderButton::buttonFill() {
 	if (orientation == Orientation::HORIZONTAL) {
-		sliderWidth = static_cast<int>((maxValue - minValue) + 3); //считаем ширину слайдра
+		sliderWidth = static_cast<int>((maxValue - minValue) + 3); //Г±Г·ГЁГІГ ГҐГ¬ ГёГЁГ°ГЁГ­Гі Г±Г«Г Г©Г¤Г°Г 
 		sliderValue -= minValue;
 		arr.resize(sliderHeight);
 		for (int i = 0; i < sliderHeight; i++) {
-			for (int j = 0; j < sliderWidth; j++) {   //создаём вектор для хранения слайдера
+			for (int j = 0; j < sliderWidth; j++) {   //Г±Г®Г§Г¤Г ВёГ¬ ГўГҐГЄГІГ®Г° Г¤Г«Гї ГµГ°Г Г­ГҐГ­ГЁГї Г±Г«Г Г©Г¤ГҐГ°Г 
 				arr[i].push_back(' ');
 			}
 		}
@@ -47,26 +47,26 @@ void SliderButton::buttonFill() {
 		for (int i = 1; i < sliderWidth - 1; i++) {
 			arr[sliderHeight - 2][i] = '-';
 		}
-		for (int i = 0, j = (sliderWidth - static_cast<int>(sliderName.size())) / 2; i < static_cast<int>(sliderName.size()); i++, j++) { //отображение имени слайдера
+		for (int i = 0, j = (sliderWidth - static_cast<int>(sliderName.size())) / 2; i < static_cast<int>(sliderName.size()); i++, j++) { //Г®ГІГ®ГЎГ°Г Г¦ГҐГ­ГЁГҐ ГЁГ¬ГҐГ­ГЁ Г±Г«Г Г©Г¤ГҐГ°Г 
 			arr[0][j] = sliderName[i];
 		}
 		std::string s = std::to_string(sliderValue + minValue);
-		for (int i = 0, j = (sliderWidth - static_cast<int>(s.size())) / 2; i < static_cast<int>(s.size()); i++, j++) {  //отображения состояния слайдера
+		for (int i = 0, j = (sliderWidth - static_cast<int>(s.size())) / 2; i < static_cast<int>(s.size()); i++, j++) {  //Г®ГІГ®ГЎГ°Г Г¦ГҐГ­ГЁГї Г±Г®Г±ГІГ®ГїГ­ГЁГї Г±Г«Г Г©Г¤ГҐГ°Г 
 			arr[sliderHeight - 1][j] = s[i];
 		}
-		arr[sliderHeight - 2][sliderValue + 1] = 219;  //ползунок слайдера
+		arr[sliderHeight - 2][sliderValue + 1] = 219;  //ГЇГ®Г«Г§ГіГ­Г®ГЄ Г±Г«Г Г©Г¤ГҐГ°Г 
 	}
 	else if (orientation == Orientation::VERTICAL)
 	{
 		double V = sliderValue;
-		((maxValue - minValue + 1) % 2 == 0) ? sliderHeight = ((maxValue - minValue + 1) / 2) + 4 : sliderHeight = ((maxValue - minValue + 1) / 2) + 5; //высота
-		sliderWidth = (sliderName.size() >= 3) ? sliderName.size() + 2 : 5;  //ширина
+		((maxValue - minValue + 1) % 2 == 0) ? sliderHeight = ((maxValue - minValue + 1) / 2) + 4 : sliderHeight = ((maxValue - minValue + 1) / 2) + 5; //ГўГ»Г±Г®ГІГ 
+		sliderWidth = (sliderName.size() >= 3) ? sliderName.size() + 2 : 5;  //ГёГЁГ°ГЁГ­Г 
 		V = sliderValue - minValue;
 		V = V / 2 - 1;
 		arr.resize(sliderHeight);
 		for (int i = 0; i < sliderHeight; i++)
 		{
-			for (int j = 0; j < sliderWidth; j++)    //создаём ветор для слайдера
+			for (int j = 0; j < sliderWidth; j++)    //Г±Г®Г§Г¤Г ВёГ¬ ГўГҐГІГ®Г° Г¤Г«Гї Г±Г«Г Г©Г¤ГҐГ°Г 
 			{
 				arr[i].push_back(' ');
 			}
@@ -80,7 +80,7 @@ void SliderButton::buttonFill() {
 		for (int i = 0; i < sliderName.size(); i++) arr[0][i + 2] = sliderName[i];
 
 		std::string s = std::to_string(sliderValue);
-		for (int i = 0, j = (sliderWidth - s.size()) / 2 + 2; i < s.size(); i++, j++)   //состояние слайдера
+		for (int i = 0, j = (sliderWidth - s.size()) / 2 + 2; i < s.size(); i++, j++)   //Г±Г®Г±ГІГ®ГїГ­ГЁГҐ Г±Г«Г Г©Г¤ГҐГ°Г 
 		{
 			arr[sliderHeight - 1][j] = s[i];
 		}
@@ -91,7 +91,7 @@ void SliderButton::buttonFill() {
 			arr[sliderHeight - 4 - V][sliderWidth / 2 + 1] = char(220);
 			arr[sliderHeight - 4 - V][sliderWidth / 2] = char(220);
 		}
-		else                                                                    //создание и установка на нужную позицию ползунка
+		else                                                                    //Г±Г®Г§Г¤Г Г­ГЁГҐ ГЁ ГіГ±ГІГ Г­Г®ГўГЄГ  Г­Г  Г­ГіГ¦Г­ГіГѕ ГЇГ®Г§ГЁГ¶ГЁГѕ ГЇГ®Г«Г§ГіГ­ГЄГ 
 		{
 			arr[sliderHeight - 3 - V][sliderWidth / 2 + 2] = char(223);
 			arr[sliderHeight - 3 - V][sliderWidth / 2 + 1] = char(223);
@@ -106,7 +106,7 @@ void SliderButton::buttonDefault() {
 		arr[0][0] = ' ';
 	}
 	else {
-		setcur(sliderPositionX - 1, sliderPositionY - 1); // устранение артефактов
+		setcur(sliderPositionX - 1, sliderPositionY - 1); // ГіГ±ГІГ°Г Г­ГҐГ­ГЁГҐ Г Г°ГІГҐГґГ ГЄГІГ®Гў
 		std::cout << ' ';
 		arr[0][0] = ' ';
 	}
@@ -130,14 +130,14 @@ void SliderButton::setValue(int value) {
 
 		std::string s = std::to_string(sliderValue + minValue);
 
-		for (int i = 0, j = (sliderWidth - static_cast<int>(s.size())) / 2; i < static_cast<int>(s.size()); i++, j++) { //закрашиваем предыдущее состояние слайдера
+		for (int i = 0, j = (sliderWidth - static_cast<int>(s.size())) / 2; i < static_cast<int>(s.size()); i++, j++) { //Г§Г ГЄГ°Г ГёГЁГўГ ГҐГ¬ ГЇГ°ГҐГ¤Г»Г¤ГіГ№ГҐГҐ Г±Г®Г±ГІГ®ГїГ­ГЁГҐ Г±Г«Г Г©Г¤ГҐГ°Г 
 			arr[sliderHeight - 1][j] = ' ';
 		}
 		if (value >= 0 && value <= maxValue - minValue) sliderValue = value;
 
 		s = std::to_string(sliderValue + minValue);
 
-		for (int i = 0, j = (sliderWidth - static_cast<int>(s.size())) / 2; i < static_cast<int>(s.size()); i++, j++) {  //устанавливаем новое значение слайдера
+		for (int i = 0, j = (sliderWidth - static_cast<int>(s.size())) / 2; i < static_cast<int>(s.size()); i++, j++) {  //ГіГ±ГІГ Г­Г ГўГ«ГЁГўГ ГҐГ¬ Г­Г®ГўГ®ГҐ Г§Г­Г Г·ГҐГ­ГЁГҐ Г±Г«Г Г©Г¤ГҐГ°Г 
 			arr[sliderHeight - 1][j] = s[i];
 		}
 
@@ -148,7 +148,7 @@ void SliderButton::setValue(int value) {
 		V = sliderValue - minValue;
 		V = V / 2 - 1;
 
-		if (V - int(V) == 0)                        //закрашиваем предыдущее состояние слайдера
+		if (V - int(V) == 0)                        //Г§Г ГЄГ°Г ГёГЁГўГ ГҐГ¬ ГЇГ°ГҐГ¤Г»Г¤ГіГ№ГҐГҐ Г±Г®Г±ГІГ®ГїГ­ГЁГҐ Г±Г«Г Г©Г¤ГҐГ°Г 
 		{
 			arr[sliderHeight - 4 - V][sliderWidth / 2 + 2] = ' ';
 			arr[sliderHeight - 4 - V][sliderWidth / 2 + 1] = char(124);
@@ -167,7 +167,7 @@ void SliderButton::setValue(int value) {
 			arr[sliderHeight - 1][i] = ' ';
 		}
 
-		if (value >= minValue && value <= maxValue)sliderValue = value; //устанавливаем новое значение слайдера
+		if (value >= minValue && value <= maxValue)sliderValue = value; //ГіГ±ГІГ Г­Г ГўГ«ГЁГўГ ГҐГ¬ Г­Г®ГўГ®ГҐ Г§Г­Г Г·ГҐГ­ГЁГҐ Г±Г«Г Г©Г¤ГҐГ°Г 
 		V = sliderValue - minValue;
 		V = V / 2 - 1;
 
@@ -195,7 +195,7 @@ void SliderButton::setValue(int value) {
 void SliderButton::show() {
 	for (int i = 0; i < sliderHeight; i++) {
 		for (int j = 0; j < sliderWidth; j++) {
-			setcur(sliderPositionX + j, sliderPositionY + i);  //отображаем слайдер
+			setcur(sliderPositionX + j, sliderPositionY + i);  //Г®ГІГ®ГЎГ°Г Г¦Г ГҐГ¬ Г±Г«Г Г©Г¤ГҐГ°
 			std::cout << arr[i][j];
 		}
 	}
@@ -495,7 +495,7 @@ void SwitchButton::buttonFill()
 void SwitchButton::buttonDefault()
 {
 	isPressed = false;
-	setcur(switchPositionX - 1, switchPositionY - 1); // устранение артефактов
+	setcur(switchPositionX - 1, switchPositionY - 1); // ГіГ±ГІГ°Г Г­ГҐГ­ГЁГҐ Г Г°ГІГҐГґГ ГЄГІГ®Гў
 	std::cout << ' ';
 	for (int i = 0; i < switchHeight; i++)
 	{
@@ -801,14 +801,14 @@ void ScrollButton::handleMouseEvent(COORD mousePos)
 			}
 			else
 			{
-				if (mousePos.X == scrollPositionX + scrollHeight / 2 && mousePos.Y == scrollPositionY) {
+				if (mousePos.X == scrollPositionX + scrollWidth / 2 && mousePos.Y == scrollPositionY) {
 					int temp = slideNumber;
 					if (temp > 0)temp -= 1;
 					else if (temp == 0)temp = content.size() - 1;
 					nextSlide(temp);
 					if (userFunction1 != nullptr)userFunction1();
 				}
-				else if (mousePos.X == scrollPositionX + scrollHeight / 2 && mousePos.Y == scrollPositionY + scrollHeight - 1) {
+				else if (mousePos.X == scrollPositionX + scrollWidth / 2 && mousePos.Y == scrollPositionY + scrollHeight - 1) {
 					int temp = slideNumber;
 					if (temp < content.size() - 1)temp += 1;
 					else if (temp == content.size() - 1)temp = 0;
