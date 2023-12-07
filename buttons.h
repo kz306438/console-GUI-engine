@@ -24,7 +24,7 @@ namespace {
 	}
 }
 
-class Button : public Object{
+class Button : public Object {
 protected:
 	virtual void buttonFill() = 0;
 	virtual void buttonDefault() = 0;
@@ -100,6 +100,8 @@ public:
 
 	void changePosition(int positionX, int positionY) override;
 
+	void setButtonTexture(char topLeft, char topRight, char bottomLeft, char bottomRight, char horizontal, char vertical);
+
 private:
 	std::vector<std::vector<char>> arr;
 	int buttonHeight;
@@ -108,6 +110,12 @@ private:
 	int buttonPositionY;
 	std::string buttonName;
 	std::function<void()> userFunction;
+	char topLeftCorner = char(201);
+	char topRightCorner = char(187);
+	char bottomLeftCorner = char(200);
+	char bottomRightCorner = char(188);
+	char horizontalLine = char(205);
+	char verticalLine = char(186);
 	void buttonDefault() override;
 	void buttonPressed() override;
 	void show() override;
@@ -187,6 +195,8 @@ public:
 	void addName(std::string name, int namePositionX, int namePositionY);
 
 	void changePosition(int positionX, int positionY) override;
+
+	int getSlideNumber();
 
 private:
 	std::vector<std::vector<std::vector<char>>> content;

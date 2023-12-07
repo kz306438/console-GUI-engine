@@ -325,18 +325,18 @@ void StandartButton::buttonFill()
 	}
 	for (int i = 0; i < buttonHeight; i++)
 	{
-		arr[i][0] = '|';
-		arr[i][buttonWidth - 1] = '|';
+		arr[i][0] = verticalLine;
+		arr[i][buttonWidth - 1] = verticalLine;
 	}
 	for (int j = 0; j < buttonWidth; j++)
 	{
-		arr[0][j] = '-';
-		arr[buttonHeight - 1][j] = '-';
+		arr[0][j] = horizontalLine;
+		arr[buttonHeight - 1][j] = horizontalLine;
 	}
-	arr[0][0] = static_cast<char>(197);
-	arr[buttonHeight - 1][0] = static_cast<char>(197);
-	arr[0][buttonWidth - 1] = static_cast<char>(197);
-	arr[buttonHeight - 1][buttonWidth - 1] = static_cast<char>(197);
+	arr[0][0] = topLeftCorner;
+	arr[buttonHeight - 1][0] = bottomLeftCorner;
+	arr[0][buttonWidth - 1] = topRightCorner;
+	arr[buttonHeight - 1][buttonWidth - 1] = bottomRightCorner;
 	int x = (buttonWidth - static_cast<int>(buttonName.size())) / 2;
 	int y = (buttonHeight - 1) / 2;
 	for (int i = 0; i < static_cast<int>(buttonName.size()); i++)
@@ -351,18 +351,18 @@ void StandartButton::buttonDefault()
 	isPressed = false;
 	for (int i = 0; i < buttonHeight; i++)
 	{
-		arr[i][0] = '|';
-		arr[i][buttonWidth - 1] = '|';
+		arr[i][0] = verticalLine;
+		arr[i][buttonWidth - 1] = verticalLine;
 	}
 	for (int j = 0; j < buttonWidth; j++)
 	{
-		arr[0][j] = '-';
-		arr[buttonHeight - 1][j] = '-';
+		arr[0][j] = horizontalLine;
+		arr[buttonHeight - 1][j] = horizontalLine;
 	}
-	arr[0][0] = static_cast<char>(197);
-	arr[buttonHeight - 1][0] = static_cast<char>(197);
-	arr[0][buttonWidth - 1] = static_cast<char>(197);
-	arr[buttonHeight - 1][buttonWidth - 1] = static_cast<char>(197);
+	arr[0][0] = topLeftCorner;
+	arr[buttonHeight - 1][0] = bottomLeftCorner;
+	arr[0][buttonWidth - 1] = topRightCorner;
+	arr[buttonHeight - 1][buttonWidth - 1] = bottomRightCorner;
 }
 
 void StandartButton::buttonPressed()
@@ -396,6 +396,17 @@ void StandartButton::changePosition(int positionX, int positionY)
 {
 	this->buttonPositionX = positionX;
 	this->buttonPositionY = positionY;
+}
+
+void StandartButton::setButtonTexture(char topLeft, char topRight, char bottomLeft, char bottomRight, char horizontal, char vertical) {
+	topLeftCorner = topLeft;
+	topRightCorner = topRight;
+	bottomLeftCorner = bottomLeft;
+	bottomRightCorner = bottomRight;
+	horizontalLine = horizontal;
+	verticalLine = vertical;
+	buttonFill();
+	show();
 }
 
 void StandartButton::handleMouseEvent(COORD mousePos)
@@ -696,6 +707,12 @@ void ScrollButton::buttonFill()
 		arr[0][scrollWidth / 2] = char(30);
 		arr[scrollHeight - 1][scrollWidth / 2] = char(31);
 	}
+}
+
+
+int ScrollButton::getSlideNumber()
+{
+	return this->slideNumber;
 }
 
 void ScrollButton::buttonDefault()
