@@ -1,6 +1,8 @@
+
 #pragma once
 #include <Windows.h>
 #include <vector>
+#include "objectInteraction.h"
 class Object
 {
 public:
@@ -8,3 +10,7 @@ public:
 	virtual void handleMouseEvent(COORD mousePos);
 	virtual void handleKeyboardEvent(int key);
 };
+
+
+
+

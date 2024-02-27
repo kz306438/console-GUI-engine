@@ -8,7 +8,7 @@ void invisibleCursor()
 	::SetConsoleCursorInfo(::GetStdHandle(STD_OUTPUT_HANDLE), &curs);
 }
 
-void setcur(int x, int y)//установка курсора на позицию  x y 
+void setcur(int x, int y) 
 {
 	COORD coord{};
 	coord.X = x;
